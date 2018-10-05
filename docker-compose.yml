@@ -15,15 +15,10 @@ services:
     image: mysql:5.6.23
     volumes:
       - db-data:/var/lib/mysql/data
+    ports:
+       - "3306:3306"
     env_file:
       - env
     container_name: m2c_db_1
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "8580:80"
-    links:
-      - db
-    container_name: m2c_phpmyadmin_1
 volumes:
   db-data: 

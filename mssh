@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker exec -it m2c_web_1 /bin/bash -c "export COLUMNS=$(tput cols); export LINES=$(tput lines); exec bash"

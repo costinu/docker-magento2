@@ -26,8 +26,14 @@ RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype
     && docker-php-ext-install xsl \
     && docker-php-ext-install soap \
     && docker-php-ext-install bcmath \
+    && pecl install xdebug-2.5.5 \
+    && docker-php-ext-enable xdebug \
     && requirementsToRemove="libpng12-dev libmcrypt-dev libcurl3-dev libpng12-dev libfreetype6-dev libjpeg-turbo8-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove
+
+COPY ./custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini
+
+RUN echo "ServerName local.magento" >> /etc/apache2/apache2.conf
 
 RUN chsh -s /bin/bash www-data
 

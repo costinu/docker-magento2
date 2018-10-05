@@ -4,6 +4,7 @@ services:
     build:
         context: ./developer
         dockerfile: Dockerfile
+    container_name: m2c_web_1
     ports:
       - "80:80"
     links:
@@ -16,11 +17,13 @@ services:
       - db-data:/var/lib/mysql/data
     env_file:
       - env
+    container_name: m2c_db_1
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
       - "8580:80"
     links:
-      - db     
+      - db
+    container_name: m2c_phpmyadmin_1
 volumes:
   db-data: 

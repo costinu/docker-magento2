@@ -16,7 +16,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql/data
     ports:
-       - "3306:3306"
+       - "3336:3306"
     env_file:
       - env
     container_name: m2c_db_1
